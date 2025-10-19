@@ -5,6 +5,7 @@ const WarrantyChecker = () => {
   const [startDate, setStartDate] = useState('');
   const [warrantyPeriod, setWarrantyPeriod] = useState('');
   const [warrantyData, setWarrantyData] = useState(null);
+  const [showMonthsGuide, setShowMonthsGuide] = useState(false);
 
   const calculateWarranty = () => {
     if (!startDate || !warrantyPeriod) {
@@ -33,9 +34,18 @@ const WarrantyChecker = () => {
     const today = new Date();
     const isActive = today <= endDate;
 
+    // Format dates with month names
+    const formatDateWithMonth = (date) => {
+      return date.toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+    };
+
     setWarrantyData({
-      startDate: start.toLocaleDateString(),
-      endDate: endDate.toLocaleDateString(),
+      startDate: formatDateWithMonth(start),
+      endDate: formatDateWithMonth(endDate),
       isActive,
       daysRemaining: isActive 
         ? Math.ceil((endDate - today) / (1000 * 60 * 60 * 24))
@@ -47,7 +57,27 @@ const WarrantyChecker = () => {
     setStartDate('');
     setWarrantyPeriod('');
     setWarrantyData(null);
+    setShowMonthsGuide(false);
   };
+
+  const toggleMonthsGuide = () => {
+    setShowMonthsGuide(!showMonthsGuide);
+  };
+
+  const monthsList = [
+    { number: '01', name: 'January' },
+    { number: '02', name: 'February' },
+    { number: '03', name: 'March' },
+    { number: '04', name: 'April' },
+    { number: '05', name: 'May' },
+    { number: '06', name: 'June' },
+    { number: '07', name: 'July' },
+    { number: '08', name: 'August' },
+    { number: '09', name: 'September' },
+    { number: '10', name: 'October' },
+    { number: '11', name: 'November' },
+    { number: '12', name: 'December' }
+  ];
 
   return (
     <div className="warranty-container">
@@ -55,6 +85,30 @@ const WarrantyChecker = () => {
         <h1 className="title">🔧 Warranty Checker</h1>
         <p className="subtitle">Check your product warranty status</p>
         
+        {/* Month Reference Button */}
+        <div className="month-guide-container">
+          <button 
+            onClick={toggleMonthsGuide}
+            className="month-guide-btn"
+          >
+            📅 Month Reference Guide
+          </button>
+          
+          {showMonthsGuide && (
+            <div className="months-guide">
+              <h4>Month Reference Guide</h4>
+              <div className="months-grid">
+                {monthsList.map(month => (
+                  <div key={month.number} className="month-item">
+                    <span className="month-number">{month.number}</span>
+                    <span className="month-name">{month.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
         <div className="form-container">
           <div className="input-group">
             <label htmlFor="startDate">Purchase Date</label>
