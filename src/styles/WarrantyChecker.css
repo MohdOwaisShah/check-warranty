@@ -1,0 +1,689 @@
+/* WarrantyChecker.css - Responsive Design */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.warranty-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.warranty-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  text-align: center;
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.form-container {
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.date-input,
+.select-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  font-family: inherit;
+}
+
+.date-input:hover,
+.select-input:hover {
+  border-color: #c8d0e7;
+}
+
+.date-input:focus,
+.select-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  flex: 1;
+  padding: 16px 25px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #666;
+  border: 2px solid #e1e5e9;
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.result-container {
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid #e1e5e9;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.status-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.status-dot.active {
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+}
+
+.status-dot.expired {
+  background: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.status-title {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.warranty-details {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: #666;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.detail-value {
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.detail-value.highlight {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.status-message {
+  text-align: center;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.status-message.active {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-message.expired {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Tablet Responsive Styles */
+@media (max-width: 768px) {
+  .warranty-container {
+    padding: 15px;
+    min-height: 100vh;
+    align-items: flex-start;
+  }
+  
+  .warranty-card {
+    padding: 30px 25px;
+    margin: 10px 0;
+    border-radius: 16px;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 35px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .date-input,
+  .select-input {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+  }
+  
+  .btn {
+    padding: 15px 20px;
+    font-size: 0.95rem;
+  }
+  
+  .result-card {
+    padding: 25px 20px;
+    border-radius: 14px;
+  }
+  
+  .status-header {
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .status-title {
+    font-size: 1.3rem;
+  }
+  
+  .warranty-details {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .detail-item {
+    padding: 12px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .detail-label {
+    font-size: 0.9rem;
+  }
+  
+  .detail-value {
+    font-size: 0.95rem;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .status-message {
+    padding: 16px;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 480px) {
+  .warranty-container {
+    padding: 10px;
+    align-items: stretch;
+  }
+  
+  .warranty-card {
+    padding: 25px 20px;
+    margin: 5px 0;
+    border-radius: 14px;
+    max-width: none;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  
+  .date-input,
+  .select-input {
+    padding: 13px 16px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .button-group {
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .result-card {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  .status-header {
+    margin-bottom: 18px;
+    gap: 8px;
+  }
+  
+  .status-dot {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .status-title {
+    font-size: 1.2rem;
+  }
+  
+  .warranty-details {
+    padding: 18px 15px;
+    border-radius: 10px;
+  }
+  
+  .detail-item {
+    padding: 10px 0;
+  }
+  
+  .detail-label {
+    font-size: 0.85rem;
+  }
+  
+  .detail-value {
+    font-size: 0.9rem;
+  }
+  
+  .detail-value.highlight {
+    font-size: 1rem;
+  }
+  
+  .status-message {
+    padding: 14px 12px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    line-height: 1.4;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 360px) {
+  .warranty-card {
+    padding: 20px 15px;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+  }
+  
+  .date-input,
+  .select-input {
+    padding: 12px 14px;
+  }
+  
+  .btn {
+    padding: 13px 16px;
+    font-size: 0.85rem;
+  }
+  
+  .result-card {
+    padding: 18px 12px;
+  }
+  
+  .status-title {
+    font-size: 1.1rem;
+  }
+  
+  .warranty-details {
+    padding: 15px 12px;
+  }
+  
+  .status-message {
+    font-size: 0.9rem;
+    padding: 12px 10px;
+  }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1200px) {
+  .warranty-card {
+    max-width: 550px;
+    padding: 50px;
+  }
+  
+  .title {
+    font-size: 2.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .date-input,
+  .select-input {
+    padding: 18px 22px;
+    font-size: 1.05rem;
+  }
+  
+  .btn {
+    padding: 18px 28px;
+    font-size: 1.05rem;
+  }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .warranty-card {
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .warranty-container {
+    background: white !important;
+  }
+  
+  .warranty-card {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .btn {
+    display: none;
+  }
+}
+
+/* Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .btn-primary::before {
+    display: none;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .warranty-card {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .title {
+    color: #ffffff;
+  }
+  
+  .subtitle {
+    color: #cccccc;
+  }
+  
+  .input-group label {
+    color: #ffffff;
+  }
+  
+  .date-input,
+  .select-input {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: #ffffff;
+  }
+  
+  .date-input:focus,
+  .select-input:focus {
+    border-color: #667eea;
+  }
+  
+  .btn-secondary {
+    background: #2d2d2d;
+    color: #cccccc;
+    border-color: #404040;
+  }
+  
+  .btn-secondary:hover {
+    background: #363636;
+  }
+  
+  .result-card {
+    background: linear-gradient(135deg, #2d2d2d 0%, #363636 100%);
+    border-color: #404040;
+  }
+  
+  .status-title {
+    color: #ffffff;
+  }
+  
+  .warranty-details {
+    background: #2d2d2d;
+  }
+  
+  .detail-label {
+    color: #cccccc;
+  }
+  
+  .detail-value {
+    color: #ffffff;
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+  .warranty-container {
+    align-items: flex-start;
+    padding: 10px;
+  }
+  
+  .warranty-card {
+    margin: 5px 0;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+}
